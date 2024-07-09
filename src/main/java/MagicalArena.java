@@ -1,7 +1,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
-class Player{
+class Player {
     int health, strength, attack;
     
     Player(int health, int strength, int attack) {
@@ -11,13 +11,13 @@ class Player{
     }
 }
 
-public class MagicalArena{
+public class MagicalArena {
 
     public static boolean magicalArena(Player A, Player B, boolean turn) {
         Random rand = new Random();
         
-        while (A.health > 0 && B.health > 0) {
-            if (turn) { // Player A attacks
+        while(A.health > 0 && B.health > 0) {
+            if(turn) { // Player A attacks
                 int attackDamage = (rand.nextInt(6) + 1) * A.attack;
                 int defendingStrength = (rand.nextInt(6) + 1) * B.strength;
                 
