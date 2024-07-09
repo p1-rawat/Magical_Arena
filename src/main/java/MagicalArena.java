@@ -13,6 +13,39 @@ class Player{
 
 public class MagicalArena{
 
+    public static boolean magicalArena(Player A, Player B, boolean turn) {
+        Random rand = new Random();
+        
+        while (A.health > 0 && B.health > 0) {
+            if (turn) { // Player A attacks
+                int attackDamage = (rand.nextInt(6) + 1) * A.attack;
+                int defendingStrength = (rand.nextInt(6) + 1) * B.strength;
+                
+                // Calculate effective damage
+                int effectiveDamage = attackDamage - defendingStrength;
+                if (effectiveDamage > 0) {
+                    B.health -= effectiveDamage;
+                }
+            } 
+            else { // Player B attacks
+                int attackDamage = (rand.nextInt(6) + 1) * B.attack;
+                int defendingStrength = (rand.nextInt(6) + 1) * A.strength;
+                
+                // Calculate effective damage
+                int effectiveDamage = attackDamage - defendingStrength;
+                if (effectiveDamage > 0) {
+                    A.health -= effectiveDamage;
+                }
+            }
+            
+            // Switch turns
+            turn = !turn;
+        }
+        
+        // Determine the winner
+        return A.health > 0;
+    }
+
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         
